@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  </head>
+
+  <body>
+
+	<form action = "/converter" method = "POST">
+	
+
+		<p> 
+		<label for="original_currency">Original Currency</label>
+		<select id="original_currency" name="original_currency">  
+			<% currencies.each do |currency| %>
+			<option value="<%= currency %>"> <%= currency %> </option>
+			<% end %>
+
+			
+		</select>
+  		</p>
+	</form>
+
+
+	<br>
+	<br>
+  </body>
+
+</html>

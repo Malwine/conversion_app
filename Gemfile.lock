@@ -38,5 +38,6 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
+  nokogiri
   rspec
   sinatra

@@ -16,4 +16,6 @@ describe ConversionRate do
     expect(ConversionRate.currencies).to include("HUF")
   end
 
+ # it ""
+
 end

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'the conversion app',:type => :feature do 
 
-  it 'correctly convert EUR to USD when form is filled out' do 
+  it 'correctly converts EUR to USD when form is filled out' do 
     allow(ConversionRate).to receive(:rate).and_return(1.2)
     allow(ConversionRate).to receive(:currencies).and_return(["EUR","USD"])
   

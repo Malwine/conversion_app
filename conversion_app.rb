@@ -24,9 +24,14 @@ class ConversionRate
       currency["currency"]
     end 
   end
-
 end
 
 get '/' do
   erb :main, :locals => {:currencies => ConversionRate.currencies}
+end
+
+post '/converter' do
+  #Conversion.convert(ConversionRate)   not ready yet
+
+  
 end

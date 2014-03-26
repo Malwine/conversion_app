@@ -13,7 +13,9 @@
 
 		<p> 
 			<label for="original_currency">Original Currency</label>
-			<select id="original_currency" name="original_currency"> <% currencies.each do |currency| %>
+			<select id="original_currency" name="original_currency"> 
+				<option value="<%= %>"> <%= %>EUR </option>
+				<% currencies.each do |currency| %>
 				<option value="<%= currency %>"> <%= currency %> </option>
 				<% end %>
 			</select>
@@ -21,14 +23,15 @@
 
   		<p> 
 			<label for="target_currency">Target Currency</label>
-			<select id="target_currency" name="target_currency"> <% currencies.each do |currency| %>
+			<select id="target_currency" name="target_currency">
+				<option value="<%= %>"> <%= %>EUR </option>
+				<% currencies.each do |currency| %>
 				<option value="<%= currency %>"> <%= currency %> </option>
 				<% end %>
 			</select>
   		</p>
   		<button>Convert</button>
-
-  		<!-- Put output here! -->	
+		<p> Converted amount: <%=  %> </p>
 	</form>
 
 

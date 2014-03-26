@@ -24,14 +24,35 @@ class ConversionRate
       currency["currency"]
     end 
   end
+
+  def get_rate(currency)
+    
+  end
 end
+
+class Amount
+
+  attr_reader :amount, :original_currency
+
+  def initialize(amount,original_currency)
+    @amount = amount
+    @original_currency = original_currency
+  end
+
+  def make_it_euros
+  end
+
+  def convert(target_currency)
+  end
+end
+
 
 get '/' do
   erb :main, :locals => {:currencies => ConversionRate.currencies}
 end
 
 post '/converter' do
-  #Conversion.convert(ConversionRate)   not ready yet
-
+  #Amount.convert(ConversionRate)   not ready yet
+  #erb :main, :locals => {}
   
 end

@@ -8,15 +8,17 @@
 	<form action = "/converter" method = "POST">
 		
 		<p>
-			<label>Amount <input type="text" name="amount"></label>
+			<label>Amount <input type="text" name="amount" value="<%=amount%>"></label>
 		</p>
 
 		<p> 
 			<label for="original_currency">Original Currency</label>
 			<select id="original_currency" name="original_currency"> 
-				<option value="<%= %>"> <%= %>EUR </option>
 				<% currencies.each do |currency| %>
-				<option value="<%= currency %>"> <%= currency %> </option>
+				<option <%if currency == original_currency%> selected <%end%>
+					value="<%= currency %>"> <%= currency %>
+				</option>
+
 				<% end %>
 			</select>
   		</p>
@@ -24,14 +26,15 @@
   		<p> 
 			<label for="target_currency">Target Currency</label>
 			<select id="target_currency" name="target_currency">
-				<option value="<%= %>"> <%= %>EUR </option>
 				<% currencies.each do |currency| %>
-				<option value="<%= currency %>"> <%= currency %> </option>
+				<option <%if currency == target_currency%> selected <%end%>
+					value="<%= currency %>"> <%= currency %>
+				</option>
 				<% end %>
 			</select>
   		</p>
   		<button>Convert</button>
-		<p> Converted amount: <%=  %> </p>
+		<p> Converted amount: <%= target_amount %> </p>
 	</form>
 
 

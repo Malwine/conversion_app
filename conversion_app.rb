@@ -4,35 +4,22 @@ require 'open-uri'
 
 class ConversionRate
 
-  @rates = {"EUR" => 1,
-            "USD" => 1.3,
-            "HUF" => 309,
-            "DKK" => 7.4,
-            "AUD" => 1.5,
-            "JPY" => 139.4,
-            "THB" => 44.2}
+  @rates = {}
   
   def self.fetch_list
-    open('https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml')
+    ecb_rates = open('https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml')
+
+    @rates["EUR"] = 1
+    doc = Nokogiri::XML(ecb_rates)
+    doc.css('Cube[currency]').map do |cube|
+      @rates[cube["currency"]] = cube["rate"].to_f
+    end
   end
 
-  def self.currencies   #class method
-    #new(fetch_list).currencies
+  def self.currencies
+    fetch_list if @rates.empty?
     @rates.keys
   end 
-   
-  attr_reader :ecb_rates_file
-
-  def initialize(ecb_rates_file)
-    @ecb_rates_file = ecb_rates_file
-  end
-
-  def currencies
-    doc = Nokogiri::XML(ecb_rates_file)
-    doc.css('Cube[currency]').map do |currency|
-      currency["currency"]
-    end 
-  end
 
   def self.get_rate(key)
     @rates[key]
@@ -51,10 +38,10 @@ end
 
 post '/converter' do
   
-  amount = (params[:amount]).to_i
+  amount = (params[:amount]).to_f
   rate1 = ConversionRate.get_rate(params[:original_currency])
   rate2 = ConversionRate.get_rate(params[:target_currency])
-  
+
   target_amount = amount/rate1*rate2
 
   erb :main, :locals => {:currencies => ConversionRate.currencies,

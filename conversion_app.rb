@@ -48,5 +48,5 @@ post '/converter' do
                          :amount => params[:amount],
                          :original_currency => params[:original_currency],
                          :target_currency => params[:target_currency],
-                         :target_amount => target_amount.to_s}
+                         :target_amount => '%.2f' % [target_amount.round(2)]}
 end

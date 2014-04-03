@@ -9,7 +9,7 @@ describe 'the conversion app',:type => :feature do
     visit '/'
     select('EUR', :from => 'Original Currency')
     select('USD', :from => 'Target Currency')
-    fill_in('Amount', :with => '10')
+    fill_in('amount', :with => '10')
     click_button('Convert')
     
     expect(page).to have_content('USD 12')

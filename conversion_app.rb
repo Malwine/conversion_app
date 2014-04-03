@@ -36,7 +36,7 @@ get '/' do
                          :target_amount => ""}
 end
 
-post '/converter' do
+post '/' do
   
   amount = (params[:amount]).to_f
   rate1 = ConversionRate.get_rate(params[:original_currency])

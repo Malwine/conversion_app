@@ -33,7 +33,7 @@ get '/' do
                          :amount => 0,
                          :original_currency => "EUR",
                          :target_currency => "EUR",
-                         :target_amount => ""}
+                         :target_amount => "0.00"}
 end
 
 post '/' do

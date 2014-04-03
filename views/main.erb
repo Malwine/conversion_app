@@ -1,45 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-  </head>
+	<head>
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap.css">
+		<link rel="stylesheet" type="text/css" href="/css/bootstrap-responsive.css">
+		<style>
+			body {
+				background-image:url('/img/escheresque_ste.png');
+			}
+			p {
+				color:#D8D8D8;
+			}
+			body {
+				margin-top: 30px;
+			}
+		</style>
+	</head>
 
-  <body>
+	<body>
 
-	<form action = "/" method = "POST">
-		
-		<p>
-			<label>Amount <input type="text" name="amount" value="<%=amount%>"></label>
-		</p>
+		<div class="container">
 
-		<p> 
-			<label for="original_currency">Original Currency</label>
-			<select id="original_currency" name="original_currency"> 
-				<% currencies.each do |currency| %>
-				<option <%if currency == original_currency%> selected <%end%>
-					value="<%= currency %>"> <%= currency %>
-				</option>
+			<p class="lead">This is a currency conversion app. Please type in your amount and select your currencies.</p>
 
-				<% end %>
-			</select>
-  		</p>
+			<form action = "/" method = "POST">
 
-  		<p> 
-			<label for="target_currency">Target Currency</label>
-			<select id="target_currency" name="target_currency">
-				<% currencies.each do |currency| %>
-				<option <%if currency == target_currency%> selected <%end%>
-					value="<%= currency %>"> <%= currency %>
-				</option>
-				<% end %>
-			</select>
-  		</p>
-  		<button>Convert</button>
-		<p> Converted amount: <%= target_amount %> </p>
-	</form>
+				<p>
+					<p>Amount</p>
+					<label><input type="text" name="amount" value="<%=amount%>"></label>
+				</p>
+				<p>
+					<label for="original_currency">Original Currency</label>
+					<select id="original_currency" name="original_currency"> 
+						<% currencies.each do |currency| %>
+						<option <%if currency == original_currency%> selected <%end%>
+							value="<%= currency %>"> <%= currency %>
+						</option>
+						<% end %>
+					</select>
+				</p>
 
-
-	<br>
-	<br>
-  </body>
+				<p>
+					<label for="target_currency">Target Currency</label>
+						<select id="target_currency" name="target_currency">
+						<% currencies.each do |currency| %>
+						<option <%if currency == target_currency%> selected <%end%>
+							value="<%= currency %>"> <%= currency %>
+						</option>
+						<% end %>
+					</select>
+				</p>
+				<button class="btn btn-primary" >Convert</button>
+				<br>
+				<br>
+				<p class="lead" > Converted amount: <%= target_amount %> </p>
+			</form>
+			<br>
+			<br>
+			<br>
+			<br>
+			<p class="lead">Currency Codes:</p>
+			<p>EUR : Euro</p>
+			<p>USD : US Dollar</p>
+			<p>BGN : Bulgarian Lev</p>
+			<p>CZK : Czech Koruna</p>
+			<p>DKK : Danish Krone</p>
+			<p>GBP : British Pound</p>
+			<p>HUF : Hungarian Forint</p>
+			<p>LTL : Lithuanian Lita</p>
+			<p>PLN : Polish Zloty</p>
+			<p>RON : Romanian New Leu</p>
+			<p>SEK : Swedish Krona</p>
+			<p>CHF : Swiss Franc</p>
+			<p>NOK : Norwegian Krone</p>
+			<p>HRK : Croatian Kuna</p>
+			<p>RUB : Russian Rouble</p>
+			<p>TRY : Turkish Lira</p>
+			<p>AUD : Australian Dollar</p>
+			<p>BRL : Brazilian Real</p>
+			<p>CAD : Canadian Dollar</p>
+			<p>CNY : Chinese Yuan</p>
+			<p>HKD : Hong Kong Dollar</p>
+			<p>IDR : Indonesian Rupiah</p>
+			<p>KRW : South Korean Won</p>
+			<p>MXN : Mexican Peso</p>
+			<p>MYR : Malaysian Ringgit</p>
+			<p>NZD : New Zealand Dollar</p>
+			<p>PHP : Philippine Peso</p>
+			<p>SGD : Singapore Dollar</p>
+			<p>THB : Thai Baht</p>
+			<p>ZAR : South African Rand</p>
+		</div>
+	</body>
 
 </html>

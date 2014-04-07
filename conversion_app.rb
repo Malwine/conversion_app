@@ -7,6 +7,7 @@ class ConversionRate
   @rates = {}
   
   def self.fetch_list
+
     ecb_rates = open('https://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml')
 
     @rates["EUR"] = 1
@@ -29,11 +30,15 @@ end
 
 
 get '/' do
-  erb :main, :locals => {:currencies => ConversionRate.currencies,
-                         :amount => 0,
-                         :original_currency => "EUR",
-                         :target_currency => "EUR",
-                         :target_amount => "0.00"}
+  begin
+    erb :main, :locals => {:currencies => ConversionRate.currencies,
+                           :amount => 0,
+                           :original_currency => "EUR",
+                           :target_currency => "EUR",
+                           :target_amount => "0.00"}
+  rescue
+    erb :error
+  end
 end
 
 post '/' do

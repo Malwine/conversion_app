@@ -6,7 +6,11 @@ describe "view spec"  do
   end
 
   def output
-    Capybara.string(app.erb(:main, :locals => {:currencies => ["EUR","USD"] }))
+    Capybara.string(app.erb(:main, :locals => {:currencies => ["EUR","USD"],
+                                               :amount => 0,
+                                               :original_currency => "EUR",
+                                               :target_currency => "EUR",
+                                               :target_amount => "0.00"}))
   end
 
   context "Currency Dropdowns" do

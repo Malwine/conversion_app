@@ -24,11 +24,11 @@
 
 			<form action = "/" method = "POST">
 
-				<p>
+				<div>
 					<p>Amount</p>
 					<label><input type="text" name="amount" value="<%=amount%>"></label>
-				</p>
-				<p>
+				</div>
+				<div>
 					<label for="original_currency">Original Currency</label>
 					<select id="original_currency" name="original_currency"> 
 						<% currencies.each do |currency| %>
@@ -37,9 +37,9 @@
 						</option>
 						<% end %>
 					</select>
-				</p>
+				</div>
 
-				<p>
+				<div>
 					<label for="target_currency">Target Currency</label>
 						<select id="target_currency" name="target_currency">
 						<% currencies.each do |currency| %>
@@ -48,7 +48,7 @@
 						</option>
 						<% end %>
 					</select>
-				</p>
+				</div>
 				<button class="btn btn-primary" >Convert</button>
 				<br>
 				<br>

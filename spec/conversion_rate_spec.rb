@@ -26,14 +26,4 @@ describe ConversionRate do
     end
   end
 
-  describe "convert" do
-    it "converts correctly" do
-
-      eur = ConversionRate.new(1)
-      usd = ConversionRate.new(1.3)
-      expect(eur.convert(10,usd)).to eql 13.0
-    end
-  end
-
-
 end

@@ -33,12 +33,18 @@ class ConversionRate
   def self.get_rate(key)
     @rates[key]
   end
-
-  def convert(amount,second_rate)
-    amount/@rate*second_rate.get_rate
-  end
 end
 
+class Amount
+
+  def initialize(amount)
+    @amount = amount
+  end
+
+  def convert(first_rate,second_rate)
+    @amount/first_rate.get_rate*second_rate.get_rate
+  end
+end
 
 
 get '/' do
@@ -55,11 +61,11 @@ end
 
 post '/' do
   
-  amount = (params[:amount]).to_f
+  amount = Amount.new((params[:amount]).to_f)
   rate1 = ConversionRate.get_rate(params[:original_currency])
   rate2 = ConversionRate.get_rate(params[:target_currency])
 
-  target_amount = rate1.convert(amount,rate2)
+  target_amount = amount.convert(rate1,rate2)
 
   erb :main, :locals => {:currencies => ConversionRate.currencies,
                          :amount => params[:amount],
